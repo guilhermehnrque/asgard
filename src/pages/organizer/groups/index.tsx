@@ -16,6 +16,7 @@ const GroupsPage: React.FC = () => {
     const listData = [
         { description: "Tipo do esporte:", value: "Vôlei" },
         { description: "Status:", value: "Ativo" },
+        
     ];
 
     const handleRedirect = () => {
