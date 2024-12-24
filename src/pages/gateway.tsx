@@ -20,7 +20,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }
 
     const ASGARD_URL = process.env.ASGARD_URL;
-
     const result = await fetch(`${ASGARD_URL}/api/profile`, {
         method: 'GET',
         headers: {
@@ -28,40 +27,40 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         },
     });
 
-    if (result.ok) {
-        const data = await result.json();
-        const profileResponse: { profile?: string; message?: string } = data;
-
-        switch (profileResponse.profile) {
-            case ProfileTypes.ORGANIZER:
-                return {
-                    redirect: {
-                        destination: '/organizer',
-                        permanent: false,
-                    },
-                };
-
-            case ProfileTypes.PLAYER:
-                return {
-                    redirect: {
-                        destination: '/player',
-                        permanent: false,
-                    },
-                };
-                
-            default:
-                return {
-                    redirect: {
-                        destination: '/login',
-                        permanent: false,
-                    },
-                };
+    if (!result.ok) {
+        return {
+            redirect: {
+                destination: '/login',
+                permanent: false,
+            },
         }
+    }
+
+    const data = await result.json();
+    const profileResponse: { profile?: string; message?: string } = data;
+
+    switch (profileResponse.profile) {
+        case ProfileTypes.ORGANIZER:
+            return {
+                redirect: {
+                    destination: '/organizer',
+                    permanent: false,
+                },
+            };
+
+        case ProfileTypes.PLAYER:
+            return {
+                redirect: {
+                    destination: '/player',
+                    permanent: false,
+                },
+            };
     }
 
     return {
         props: {},
     };
+
 };
 
 const GatewayPage = () => {
