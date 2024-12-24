@@ -11,7 +11,7 @@ interface TableCardProps {
     title: string;
     body: {
         headers: Header[];
-        data: Record<string, any>[];
+        data: Record<string, string>[];
     };
     children?: React.ReactNode;
 }

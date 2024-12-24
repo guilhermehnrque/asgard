@@ -1,5 +1,5 @@
 export const menuItems = [
-  { label: 'Inicio', href: '/' },
+  { label: 'Inicio', href: '/organizer' },
   { label: 'Grupos', href: '/organizer/groups', 
     subItems: [
       { label: 'Novo grupo', href: '/organizer/groups/create' },

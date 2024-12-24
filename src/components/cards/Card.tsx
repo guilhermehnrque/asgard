@@ -1,5 +1,5 @@
 import React from 'react';
-import CardBody from './CardBody';
+import CardBody from './OldCardBody';
 import CardTitle from './CardTitle';
 
 interface CardProps {
@@ -13,12 +13,9 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ title, body, children }) => {
     return (
-        <div className="flex flex-col bg-white border border-gray-300 rounded-lg p-4 w-full h-full mb-4">
-            <div className="flex justify-between items-center mb-4">
-                <CardTitle title={title} />
-
-                <div className="hidden md:block">{children}</div>
-            </div>
+        <div className="flex flex-col flex- bg-white border border-gray-300 rounded-lg p-4 w-full h-full mb-4">
+            <CardTitle title={title} />
+            <CardBody key={1} description={body[0].description} value={body[0].value} />
 
             <div className="flex flex-col">
                 {body.map((body, index) => (

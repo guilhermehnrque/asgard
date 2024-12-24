@@ -2,9 +2,10 @@ import React from "react";
 
 interface HeaderProps {
   toggleSidebar: () => void;
+  title: string;
 }
 
-const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
+const Header: React.FC<HeaderProps> = ({ toggleSidebar, title }) => {
   return (
     <header className="fixed top-0 left-0 w-full h-[50px] bg-white text-black p-4 z-20 border-b border-gray-300">
       <div className="flex justify-between items-center w-full h-full">
@@ -18,7 +19,7 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
         </div>
 
         <div className="flex-grow text-center font-semibold">
-          Título da página
+          {title}
         </div>
 
         <nav className="absolute right-4">

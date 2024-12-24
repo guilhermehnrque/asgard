@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import { menuItems } from "@/config/organizer/ItensMenu";
-import MainContent from "@/components/Main";
 import { useRouter } from "next/router";
-import Card from "@/components/cards/Card";
 import Button from "@/components/Button";
+import Content from "@/components/Content";
+import CardItem from "@/components/cards/CardItem";
 
 const GroupsPage: React.FC = () => {
     const router = useRouter();
@@ -13,11 +13,60 @@ const GroupsPage: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
     const toggleSidebar = () => setIsOpen(!isOpen);
 
-    const listData = [
-        { description: "Tipo do esporte:", value: "Vôlei" },
-        { description: "Status:", value: "Ativo" },
-        
-    ];
+    const listDataTwo = [
+        {
+            "title": "Grupo de vôlei do Pedrini",
+            "lines": [
+                {
+                    "description": "Tipo do esporte:",
+                    "value": "Vôlei"
+                },
+                {
+                    "description": "Status:",
+                    "value": "Ativo"
+                }
+            ]
+        },
+        {
+            "title": "Grupo de vôlei do Guiro",
+            "lines": [
+                {
+                    "description": "Tipo do esporte:",
+                    "value": "Vôlei"
+                },
+                {
+                    "description": "Status:",
+                    "value": "Ativo"
+                }
+            ]
+        },
+        {
+            "title": "Grupo de vôlei do Guiro",
+            "lines": [
+                {
+                    "description": "Tipo do esporte:",
+                    "value": "Vôlei"
+                },
+                {
+                    "description": "Status:",
+                    "value": "Ativo"
+                }
+            ]
+        },
+        {
+            "title": "Grupo de vôlei do Guiro",
+            "lines": [
+                {
+                    "description": "Tipo do esporte:",
+                    "value": "Vôlei"
+                },
+                {
+                    "description": "Status:",
+                    "value": "Ativo"
+                }
+            ]
+        }
+    ]
 
     const handleRedirect = () => {
         router.push("/organizer/groups/details");
@@ -26,18 +75,23 @@ const GroupsPage: React.FC = () => {
     return (
         <div className="flex h-screen">
             <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} menuItems={menuItems} />
+            <div className="flex flex-1 flex-col">
+                <Header toggleSidebar={toggleSidebar} title="Grupos" />
 
-            <div className="flex-1 flex flex-col">
-                <Header toggleSidebar={toggleSidebar} />
+                <Content className=" sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                    {listDataTwo.map((item, index) => (
+                        <CardItem
+                            key={index}
+                            title={item.title}
+                            lines={item.lines}
+                            footerContent={<Button
+                                onClick={handleRedirect}
+                                label="Detalhes">
+                            </Button>}
+                        />
 
-                <MainContent title="Listagem dos grupos" description="">
-                    <Card title={"Grupo de vôlei do Pedrini"} body={listData}>
-                        <Button
-                            onClick={handleRedirect}
-                            label="Detalhes">
-                        </Button>
-                    </Card>
-                </MainContent>
+                    ))}
+                </Content>
 
             </div>
         </div>
