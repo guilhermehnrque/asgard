@@ -1,6 +1,7 @@
 import CardForm from "@/components/cards/CardForm";
+import Content from "@/components/Content";
+import Grid from "@/components/Grid";
 import Header from "@/components/Header";
-import MainContent from "@/components/Main";
 import Sidebar from "@/components/Sidebar";
 import { menuItems } from "@/config/organizer/ItensMenu";
 import { useState } from "react";
@@ -12,15 +13,15 @@ const GroupCreate: React.FC = () => {
     return (
         <div className="flex h-screen">
             <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} menuItems={menuItems} />
+            <Header toggleSidebar={toggleSidebar} title="Criar Grupo" />
 
-            <div className="flex-1 flex flex-col">
-                <Header toggleSidebar={toggleSidebar} />
+            <Content>
+                <Grid className="sm:grid-cols-2 lg:grid-cols-1 gap-3" >
+                    <CardForm >
+                    </CardForm>
+                </Grid>
+            </Content>
 
-                <MainContent title="Criação de grupo" description="">
-                    <CardForm title="Preencha dos dados do grupo" />
-
-                </MainContent>
-            </div>
         </div>
     );
 }

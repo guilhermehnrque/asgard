@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import Button from "@/components/Button";
 import Content from "@/components/Content";
 import CardItem from "@/components/cards/CardItem";
+import Grid from "@/components/Grid";
 
 const GroupsPage: React.FC = () => {
     const router = useRouter();
@@ -78,19 +79,22 @@ const GroupsPage: React.FC = () => {
             <div className="flex flex-1 flex-col">
                 <Header toggleSidebar={toggleSidebar} title="Grupos" />
 
-                <Content className=" sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                    {listDataTwo.map((item, index) => (
-                        <CardItem
-                            key={index}
-                            title={item.title}
-                            lines={item.lines}
-                            footerContent={<Button
-                                onClick={handleRedirect}
-                                label="Detalhes">
-                            </Button>}
-                        />
+                <Content>
+                    <Grid className="sm:grid-cols-2 lg:grid-cols-2 gap-3" >
+                        {listDataTwo.map((item, index) => (
+                            <CardItem
+                                key={index}
+                                title={item.title}
+                                lines={item.lines}
+                                footerContent={<Button
+                                    onClick={handleRedirect}
+                                    label="Detalhes">
+                                </Button>}
+                            />
 
-                    ))}
+                        ))}
+                    </Grid>
+
                 </Content>
 
             </div>
