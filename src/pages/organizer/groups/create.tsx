@@ -1,5 +1,5 @@
-import CardForm from "@/components/cards/CardForm";
 import Content from "@/components/Content";
+import RegisterGroupForm from "@/components/features/groups/RegisterGroupForm";
 import Grid from "@/components/Grid";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
@@ -17,8 +17,7 @@ const GroupCreate: React.FC = () => {
 
             <Content>
                 <Grid className="sm:grid-cols-2 lg:grid-cols-1 gap-3" >
-                    <CardForm >
-                    </CardForm>
+                    <RegisterGroupForm />
                 </Grid>
             </Content>
 
